@@ -10,14 +10,16 @@ public class Login {
 
     private WebDriver driver;
     private static PageLogin Login;
-
+    private static PageHome home;
+    String URL = "https://www.demoblaze.com/index.html";
     @BeforeMethod(alwaysRun = true)
     public void openBrowser(){
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("https://www.demoblaze.com/index.html");
+        driver.get(URL);
         Login = new PageLogin(driver);
+        home = new PageHome(driver);
     }
     @Test
     public void LogIn(){
@@ -31,6 +33,19 @@ public class Login {
     public void logOut(){
         Login.hacerlogin("jaison0317","123456");
         Login.logOut();
+    }
+    @Test
+//    public void buyProducts(){
+//        Login.hacerlogin("jaison0317","123456");
+//        home.buyProducts();
+//    }
+    @Test
+    public void aboutUS(){
+        home.aboutUS();
+    }
+    @Test
+    public void contactUS(){
+        home.contactUS("jaison0317@gmail.com","Jaison","Prueba");
     }
     @AfterMethod
     public void closeBrowser(){

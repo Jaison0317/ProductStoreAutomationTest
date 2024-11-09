@@ -14,7 +14,7 @@ public class PageHome extends Page{
     private WebElement contactUS;
     @FindBy(xpath = "//h5[contains(text(),'New message')]")
     private WebElement contactUSModal;
-    @FindBy(xpath = "//input[@id=\"recipient-email\"]")
+    @FindBy(xpath = "//*[@id=\"recipient-email\"]")
     private WebElement inputContactUsEmail;
     @FindBy(xpath = "//input[@id=\"recipient-name\"]")
     private WebElement inputContactUsName;
@@ -26,6 +26,14 @@ public class PageHome extends Page{
     private WebElement labelCart;
     @FindBy(xpath = "//div[@id=\"page-wrapper\"]")
     private WebElement CartProducts;
+    @FindBy(xpath = "//a[contains(text(),'Phones')]")
+    private WebElement btnCellPhoneCategory;
+    @FindBy(xpath = "//a[contains(text(),'Samsung galaxy s6')]")
+    private WebElement itemCellPhone;
+    @FindBy(xpath = "/html/body/div[5]")
+    private WebElement viewProduct;
+    @FindBy(xpath = "//a[contains(text(),'Add to cart')]")
+    private WebElement btnAddToCart;
 
     private WebDriver driver;
     public PageHome(WebDriver driver) {
@@ -54,15 +62,12 @@ public class PageHome extends Page{
         try{
             if(contactUS.isDisplayed()){
                 contactUS.click();
-                if(contactUSModal.isDisplayed()){
-                    inputContactUsEmail.sendKeys(contactUsEmail);
-                    inputContactUsName.sendKeys(contactUsName);
-                    inputContactUsMessage.sendKeys(contactUsMessage);
-                    btnSendMessage.isDisplayed();
-                    btnSendMessage.click();
-                }else{
-                    Logger.getAnonymousLogger();
-                }
+                inputContactUsEmail.isDisplayed();
+                inputContactUsEmail.sendKeys(contactUsEmail);
+                inputContactUsName.sendKeys(contactUsName);
+                inputContactUsMessage.sendKeys(contactUsMessage);
+                btnSendMessage.isDisplayed();
+                btnSendMessage.click();
             }else{
                 Logger.getAnonymousLogger();
             }
@@ -90,9 +95,36 @@ public class PageHome extends Page{
 
     public void buyProducts(){
         try{
-            viewCart();
+            if(btnCellPhoneCategory.isDisplayed()){
+                btnCellPhoneCategory.click();
+                itemCellPhone.click();
+                if(viewProduct.isDisplayed()){
+                    btnAddToCart.click();
+                    driver.navigate().back();
+                }else{
+                    Logger.getAnonymousLogger();
+                }
+                viewCart();
+            }else{
+                Logger.getAnonymousLogger();
+            }
 
-
+           /* int product = 5;
+            for(int i = 0; i <= product; i++){
+                if(btnCellPhoneCategory.isDisplayed()){
+                    btnCellPhoneCategory.click();
+                    itemCellPhone.click();
+                    if(viewProduct.isDisplayed()){
+                        btnAddToCart.click();
+                        driver.navigate().back();
+                    }else{
+                        Logger.getAnonymousLogger();
+                    }
+                    viewCart();
+                }else{
+                    Logger.getAnonymousLogger();
+                }
+            }*/
         }catch (Exception e){
             Logger.getAnonymousLogger();
         }

@@ -1,0 +1,6 @@
+
+0
+java:S1220""Move this file to a named package.
+j	java:S116"NRename this field "URL" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³ç–8ÑË˜®2
+w
+java:S1450	"URemove the "driver" field and declare it as a local variable in the relevant methods.(š…ŒÅøÿÿÿÿ8‚ÑË˜®2
