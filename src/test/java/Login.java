@@ -27,10 +27,14 @@ public class Login {
     public void signUp(){
         Login.signUpUser("prueba","prueba123");
     }
-    @AfterMethod
+    @Test
     public void logOut(){
         Login.hacerlogin("jaison0317","123456");
         Login.logOut();
+    }
+    @AfterMethod
+    public void closeBrowser(){
+        driver.quit();
     }
 
 }

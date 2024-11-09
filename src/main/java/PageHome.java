@@ -92,6 +92,7 @@ public class PageHome extends Page{
         try{
             viewCart();
 
+
         }catch (Exception e){
             Logger.getAnonymousLogger();
         }
